@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--Banner-->
+<div class="page-heading about-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>Product Detail</h4>
+              <h2>{{ product.name }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--Top Text-->
+<div class="find-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>{{ product.name }}</h2>
+            </div>
+          </div>
+          <div class="col-md-8">
+<!-- How to change your own map point
+	1. Go to Google Maps
+	2. Click on your location point
+	3. Click "Share" and choose "Embed map" tab
+	4. Copy only URL and paste it within the src="" field below
+-->
+            <div id="map">
+
+                <a href="single_product/{{product.id}}"><img src='{% static "assets/images/" %}{{ product.image }}' alt=""></a>
+
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="left-content">
+              <h4>Description</h4>
+              <p>{{ product.description }}</p>
+              <form method="post" action="#">
+                  {% csrf_token %}
+                  <input type="hidden" name="id" value="{{ product.id }}">
+                  <button class="btn" type="submit">Buy Now</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
